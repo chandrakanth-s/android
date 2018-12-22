@@ -53,7 +53,6 @@ class DownloaderActivity : BaseActivity(){
     var tableHeadingFont = Font(Font.FontFamily.TIMES_ROMAN, 14f,Font.BOLD)
     var contentFont = Font(Font.FontFamily.TIMES_ROMAN, 12f,Font.BOLD)
     var purchases: ObservableList<Purchases>? = OptimizedObservableArrayList()
-    var customerId: String? = null
     var calendarFrom = Calendar.getInstance()
     var calendarTo = Calendar.getInstance()
 
@@ -69,7 +68,7 @@ class DownloaderActivity : BaseActivity(){
 
         var args = intent.extras
         if(args!=null){
-            customerId = args.getString("CUSTOMER_ID")
+            viewModel.customerId = args.getString("CUSTOMER_ID")
         }
 
         binding.dateListener = View.OnClickListener { view ->
@@ -345,8 +344,8 @@ class DownloaderActivity : BaseActivity(){
 
         var userInfoTable = PdfPTable(2)
 
-        if(customerId!=null){
-            var customer = Realm.getDefaultInstance().where(Customer::class.java).equalTo("id",customerId).findFirst()
+        if(viewModel.customerId!=null){
+            var customer = Realm.getDefaultInstance().where(Customer::class.java).equalTo("id",viewModel.customerId).findFirst()
             if(customer!=null){
                 userInfoTable.addCell(PdfPCell(Phrase("Name",tableHeadingFont)))
                 userInfoTable.addCell(PdfPCell(Phrase(customer.name)))
