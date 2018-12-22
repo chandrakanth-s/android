@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.inputmethod.EditorInfo"/>
+
+        <import type="android.text.InputType"/>
+
+        <variable
+            name="hint"
+            type="String"/>
+
+        <variable
+            name="textField"
+            type="com.cm.retailer.extensions.observable.ObservableString"/>
+
+        <variable
+            name="imeOption"
+            type="Integer"/>
+
+        <variable
+            name="inputType"
+            type="Integer"/>
+
+        <variable
+            name="doneClickListener"
+            type="com.cm.retailer.extensions.binding.models.TextViewDataBinder.DoneActionClickListener"/>
+
+        <variable
+            name="visibility"
+            type="Boolean"/>
+
+    </data>
+
+    <EditText
+        app:visibility="@{visibility?? true}"
+        android:background="@drawable/bg_creation_action_selector"
+        android:layout_marginTop="16dp"
+        android:hint="@{hint}"
+        android:id="@+id/etName"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="@={textField.data}"
+        android:layout_width="match_parent"
+        android:imeOptions="@{imeOption ?? EditorInfo.IME_NULL}"
+        android:layout_height="45dp"
+        app:imeDoneClickListener="@{doneClickListener}"
+        android:inputType="textVisiblePassword"
+        tools:text="asfsdf"/>
+
+
+</layout>
+
+

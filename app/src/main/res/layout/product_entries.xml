@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.cm.retailer.data.Kind"/>
+        <import type="com.cm.retailer.Utils"/>
+
+        <variable
+            name="viewModel"
+            type="com.cm.retailer.ui.home.customer.products.ProductChoiceViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <EditText
+            android:singleLine="true"
+            android:imeOptions="actionNone"
+            android:inputType="none"
+            android:focusable="false"
+            android:id="@+id/etName"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:text="@={viewModel.name.data}"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:singleLine="true"
+            android:imeOptions="actionNone"
+            android:inputType="none"
+            android:focusable="false"
+            android:id="@+id/etKind"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="@={viewModel.kind.data}"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            android:id="@+id/etUnits"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:text="@={viewModel.units.data}"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:singleLine="true"
+            android:imeOptions="actionNone"
+            android:inputType="none"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="@{Utils.calculate(viewModel.units.data,viewModel.priceForKind)}"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</layout>

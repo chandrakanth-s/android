@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.cm.retailer.data.Kind"/>
+
+        <variable
+            name="viewModel"
+            type="com.cm.retailer.ui.home.customer.products.ProductChoiceViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:id="@+id/etName"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:text="@={viewModel.name.data}"
+                android:background="@android:color/transparent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                android:id="@+id/etUnits"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:text="@={viewModel.units.data}"
+                android:background="@android:color/transparent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/etAmount"
+                android:gravity="center"
+                android:background="@android:color/transparent"
+                android:text="@={viewModel.amount.data}"
+                android:imeOptions="actionNext"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+</layout>

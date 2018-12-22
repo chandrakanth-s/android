@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="label"
+            type="String"/>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="enabled"
+            type="android.databinding.ObservableBoolean"/>
+
+    </data>
+
+    <Button
+        android:background="@color/colorPrimary"
+        android:alpha="@{enabled? 1f : 0.4f}"
+        android:clickable="@{enabled}"
+        android:onClick="@{clickListener}"
+        android:text="@{label}"
+        android:textSize="16sp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</layout>
+
+

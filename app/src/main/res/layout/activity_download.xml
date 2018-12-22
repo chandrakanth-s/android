@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.cm.retailer.Utils"/>
+
+        <import type="android.view.inputmethod.EditorInfo"/>
+
+        <variable
+            name="viewModel"
+            type="com.cm.retailer.ui.home.downloader.DownloaderViewModel" />
+
+        <variable
+            name="dateListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <ScrollView
+
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@drawable/dummy"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"/>
+
+                <LinearLayout
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:onClick="@{dateListener}"
+                        android:gravity="center_horizontal"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etFromDate"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"
+                        android:padding="10dp"
+                        android:tag="start"
+                        android:hint="From Date"
+                        android:background="@drawable/bg_creation_action_selector"
+                        android:text="@={viewModel.state.fromDate.data}" />
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="1dp"/>
+                    <TextView
+                        android:onClick="@{dateListener}"
+                        android:gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:padding="10dp"
+                        android:hint="To Date"
+                        android:tag="end"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/bg_creation_action_selector"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/etToDate"
+                        android:textSize="16sp"
+                        android:text="@={viewModel.state.toDate.data}" />
+
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="1dp"/>
+
+                    <TextView
+                        android:gravity="center_horizontal"
+                        android:layout_weight="0"
+                        android:layout_width="wrap_content"
+                        android:padding="10dp"
+                        android:textColor="@android:color/white"
+                        android:background="@drawable/btn_background"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/btnSearch"
+                        android:onClick="@{view -> viewModel.fetchRecords()}"
+                        android:drawableTint="@color/colorPrimaryDark"
+                        android:textSize="16sp"
+                        android:alpha="@{viewModel.isFormValid.get()? 1f : 0.4f}"
+                        android:clickable="@{viewModel.isFormValid.get()}"
+                        android:text="Search" />
+
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/tableLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="0,1,2,3"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>

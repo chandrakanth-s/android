@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_report"
+        app:showAsAction="always"
+        android:visible="true"
+        android:icon="@drawable/ic_report"
+        android:iconTint="@android:color/white"
+        android:title="Report">
+    </item>
+
+    <item
+        android:id="@+id/action_products"
+        app:showAsAction="never"
+        android:visible="true"
+        android:title="Products">
+    </item>
+    <item
+        android:id="@+id/action_customers"
+        app:showAsAction="never"
+        android:title="Add Customers">
+    </item>
+    <item
+        android:id="@+id/action_settings"
+        app:showAsAction="never"
+        android:title="Settings">
+    </item>
+</menu>

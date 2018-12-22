@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">MoM Enterprises</string>
+
+    <string name="name">Name</string>
+    <string name="code">Code</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="quantity">Quantity</string>
+    <string name="save">Save</string>
+    <string name="add_product">Add product</string>
+    <string name="products">Products</string>
+    <string name="available"><b>Available:</b> %s</string>
+    <string name="unit_price">Unit price: \u20B9 %s</string>
+    <string name="product_name_available_stock">%s (%s %s)</string>
+    <string name="price_per">Price per %s</string>
+    <string name="units_per">Units per %s</string>
+    <string name="price_per_kind_value">Price per %s: \u20B9 %s</string>
+    <string name="units">Units: %s</string>
+    <string name="label_default"></string>
+    <string name="mobile_number">Mobile number</string>
+    <string name="add_customer">Add customer</string>
+    <string name="total">Total: \u20B9 %s</string>
+    <string name="msg_edit_sales">Only today\'s sales can be edited</string>
+    <string name="details">Details</string>
+    <string name="msg_bill_payment">Dear %s,
+Your bill amount for %s is %s. %s\n
+- %s</string>
+    <string name="address">Address</string>
+    <string name="shop_name">Veerabhadra marketers</string>
+    <string name="fromDate">From</string>
+    <string name="toDate">To</string>
+    <string name="filter">Report</string>
+    <string name="particulars">Particulars</string>
+    <string name="label_unit">Units</string>
+    <string name="price_value">\u20B9 %s</string>
+    <string name="pcs">%s Pc</string>
+    <string name="select_product">Select products</string>
+    <string name="kind">Kind</string>
+
+</resources>

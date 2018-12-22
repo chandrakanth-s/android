@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.cm.retailer.Utils"/>
+
+        <variable
+            name="viewModel"
+            type="com.cm.retailer.ui.home.customer.CustomerDetailsViewModel" />
+
+        <variable
+            name="productActionListener"
+            type="com.cm.retailer.ui.home.customer.ChoiceActionListener" />
+
+    </data>
+
+    <ScrollView
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="0dp"/>
+
+            <LinearLayout
+                android:paddingTop="8dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:paddingBottom="24dp"
+                android:id="@+id/llCustomerDetails"
+                android:layout_height="wrap_content">
+
+                <include
+                    android:id="@+id/etName"
+                    app:imeOption="@{5}"
+                    app:textField="@{viewModel.state.name}"
+                    app:hint="@{@string/name}"
+                    layout="@layout/edit_text" />
+
+                <include
+                    app:imeOption="@{5}"
+                    app:hint="@{@string/mobile_number}"
+                    app:textField="@{viewModel.state.mobileNumber}"
+                    layout="@layout/edit_text" />
+
+                <include
+                    app:imeOption="@{5}"
+                    app:hint="@{@string/address}"
+                    app:textField="@{viewModel.state.address}"
+                    layout="@layout/edit_text" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvNoteEditSales"
+                    android:visibility="gone"
+                    android:paddingBottom="8dp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:textSize="14sp"
+                    android:text="@string/msg_edit_sales"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:padding="8dp"
+                    android:background="@color/colorPrimary"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView android:layout_width="0dp"
+                        android:textColor="@android:color/white"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="@string/particulars"/>
+
+                    <TextView android:layout_width="0dp"
+                        android:textColor="@android:color/white"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kind"/>
+
+                    <TextView android:layout_width="0dp"
+                        android:textColor="@android:color/white"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textSize="16sp"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="@string/label_unit"/>
+
+                    <TextView android:layout_width="0dp"
+                        android:textColor="@android:color/white"
+                        android:layout_weight="1"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:gravity="center_horizontal"
+                        android:layout_height="wrap_content"
+                        android:text="Amount"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llProductEntriesContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:viewGroupModels="@{viewModel.state.choices}"
+                    app:viewModelLayoutId="@{@layout/product_entries}"/>
+
+
+                <TextView
+                    android:paddingRight="16dp"
+                    android:layout_marginTop="8dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:text="@{@string/total(Utils.getformattedAmount(viewModel.totalAmount.data))}"
+                    android:textColor="@android:color/black"
+                    android:layout_width="match_parent"
+                    android:gravity="right"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout
+                    android:paddingBottom="16dp"
+                    android:paddingRight="16dp"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="1dp"/>
+
+                    <TextView
+                        android:textSize="16sp"
+                        android:paddingTop="8dp"
+                        android:onClick="@{view -> productActionListener.addChoice()}"
+                        android:paddingBottom="8dp"
+                        android:layout_gravity="right"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="add"/>
+
+
+                    <TextView
+                        android:layout_marginStart="16dp"
+                        android:textSize="16sp"
+                        android:paddingTop="8dp"
+                        android:onClick="@{view -> productActionListener.removeChoice()}"
+                        android:paddingBottom="8dp"
+                        android:layout_gravity="right"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="remove"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

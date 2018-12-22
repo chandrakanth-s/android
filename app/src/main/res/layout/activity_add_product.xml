@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.cm.retailer.data.Kind"/>
+
+        <variable
+            name="viewModel"
+            type="com.cm.retailer.ui.home.product.AddProductViewModel" />
+    </data>
+
+    <ScrollView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:focusable="false"
+            android:focusableInTouchMode="true"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:layout_weight="1"
+            android:paddingTop="8dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="0dp" />
+
+            <include
+                app:imeOption="@{5}"
+                app:textField="@{viewModel.state.name}"
+                app:hint="@{@string/name}"
+                layout="@layout/edit_text" />
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/bg_creation_action_selector"
+                    android:id="@+id/s_as_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    />
+
+            </LinearLayout>
+
+            <include
+                app:visibility="@{viewModel.kind.get() == Kind.BOX || viewModel.kind.get() == Kind.BAG}"
+                app:imeOption="@{5}"
+                app:hint="@{@string/units_per(viewModel.kind.get().value)}"
+                app:textField="@{viewModel.state.units}"
+                layout="@layout/edit_text" />
+
+            <include
+                app:imeOption="@{5}"
+                app:hint="@{@string/price_per(viewModel.kind.get().value)}"
+                app:textField="@{viewModel.state.price}"
+                layout="@layout/edit_text" />
+
+            <include
+                app:imeOption="@{6}"
+                app:hint="@{@string/description}"
+                app:textField="@{viewModel.state.description}"
+                layout="@layout/edit_text" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

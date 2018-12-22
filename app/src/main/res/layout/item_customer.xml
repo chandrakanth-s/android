@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.cm.retailer.data.Kind"/>
+
+        <variable
+            name="viewModel"
+            type="com.cm.retailer.ui.home.HomeViewModel" />
+
+        <variable
+            name="element"
+            type="com.cm.retailer.data.Customer"/>
+
+    </data>
+
+    <RelativeLayout
+        android:onClick="@{view -> viewModel.itemClickListener.onClick(element)}"
+        android:padding="12dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvName"
+            tools:text="Chandrakanth"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:text="@{element.name}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_below="@+id/tvName"
+            android:id="@+id/tvMobileNumber"
+            tools:text="9966308942"
+            android:paddingTop="2dp"
+            android:textSize="14sp"
+            android:text="@{element.mobileNumber}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/ivCall"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_baseline_phone_24px"
+            android:onClick="@{view -> viewModel.itemClickListener.onCall(element)}"
+            android:tint="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:alpha="0.5"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:alpha="0.5"
+            android:tint="@color/colorPrimary"
+            android:layout_marginRight="16dp"
+            android:layout_toLeftOf="@+id/ivCall"
+            android:id="@+id/ivMessage"
+            android:onClick="@{view -> viewModel.itemClickListener.onSms(element)}"
+            android:layout_centerVertical="true"
+            app:srcCompat="@drawable/ic_baseline_email_24px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</layout>

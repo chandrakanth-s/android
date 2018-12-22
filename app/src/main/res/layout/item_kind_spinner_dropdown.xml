@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="com.cm.retailer.data.Kind"/>
+
+        <variable
+            name="item"
+            type="com.cm.retailer.data.Kind"/>
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:padding="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#494949"
+            android:textSize="16sp"
+            android:text="@{item.value}"/>
+
+    </LinearLayout>
+
+</layout>
